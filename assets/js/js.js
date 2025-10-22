@@ -42,6 +42,7 @@
         }
       } else {
         banner.style.minHeight = '';
+        banner.style.marginBottom = '';
       }
       // Opcional: expõe variável CSS
       document.documentElement.style.setProperty('--header-h', `${h}px`);
@@ -143,7 +144,7 @@
       wrapper.addEventListener('pointermove', onTouchMove);
       wrapper.addEventListener('pointerup', onTouchEnd);
       wrapper.addEventListener('pointercancel', onTouchEnd);
-      wrapper.addEventListener('pointerleave', function(){ if (touching) onTouchEnd(); });
+      wrapper.addEventListener('pointerleave', function () { if (touching) onTouchEnd(); });
     }
 
     // Ajuste de altura em load/resize
@@ -157,23 +158,23 @@
 })();
 
 // Menu mobile (hambúrguer)
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
   const header = document.querySelector('header');
   const toggle = document.querySelector('.menu-toggle') || document.querySelector('header .menu-icon');
   const nav = document.querySelector('header nav');
   if (!header || !toggle || !nav) return;
 
-  function openMenu(){
+  function openMenu() {
     header.classList.add('is-open');
     document.body.classList.add('menu-open');
-    if (toggle.setAttribute) toggle.setAttribute('aria-expanded','true');
+    if (toggle.setAttribute) toggle.setAttribute('aria-expanded', 'true');
   }
-  function closeMenu(){
+  function closeMenu() {
     header.classList.remove('is-open');
     document.body.classList.remove('menu-open');
-    if (toggle.setAttribute) toggle.setAttribute('aria-expanded','false');
+    if (toggle.setAttribute) toggle.setAttribute('aria-expanded', 'false');
   }
-  function toggleMenu(){
+  function toggleMenu() {
     if (header.classList.contains('is-open')) closeMenu(); else openMenu();
   }
 
@@ -181,18 +182,18 @@ document.addEventListener('DOMContentLoaded', function(){
   toggle.addEventListener('click', toggleMenu);
 
   // Fecha ao clicar em qualquer link do menu
-  nav.addEventListener('click', function(e){
+  nav.addEventListener('click', function (e) {
     const link = e.target.closest('a');
     if (link) closeMenu();
   });
 
   // Fecha com ESC
-  document.addEventListener('keydown', function(e){
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeMenu();
   });
 
   // Fecha ao clicar fora do header quando aberto
-  document.addEventListener('click', function(e){
+  document.addEventListener('click', function (e) {
     if (!header.classList.contains('is-open')) return;
     if (header.contains(e.target)) return;
     closeMenu();
@@ -201,14 +202,14 @@ document.addEventListener('DOMContentLoaded', function(){
   // Fecha ao sair do breakpoint mobile
   const mq = window.matchMedia('(min-width: 821px)');
   if (mq.addEventListener) {
-    mq.addEventListener('change', (e)=>{ if (e.matches) closeMenu(); });
+    mq.addEventListener('change', (e) => { if (e.matches) closeMenu(); });
   } else if (mq.addListener) {
-    mq.addListener(function(e){ if (e.matches) closeMenu(); });
+    mq.addListener(function (e) { if (e.matches) closeMenu(); });
   }
 });
 
 // Galeria moderna + Lightbox
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
   try {
     // Injeta CSS de melhorias da galeria e lightbox
     const cssId = 'gallery-modern-css';
@@ -248,9 +249,9 @@ body.lb-open{overflow:hidden}
       lb = document.createElement('div');
       lb.id = 'lightbox';
       lb.className = 'lightbox';
-      lb.setAttribute('aria-modal','true');
-      lb.setAttribute('role','dialog');
-      lb.setAttribute('aria-hidden','true');
+      lb.setAttribute('aria-modal', 'true');
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-hidden', 'true');
       lb.innerHTML = `
         <button class="lightbox__close" aria-label="Fechar">×</button>
         <img class="lightbox__img" alt="Imagem ampliada">
@@ -268,7 +269,7 @@ body.lb-open{overflow:hidden}
     let currentList = [];
     let currentIndex = 0;
 
-    function openLightbox(list, index){
+    function openLightbox(list, index) {
       currentList = list;
       currentIndex = index;
       const src = currentList[currentIndex].getAttribute('src');
@@ -276,26 +277,26 @@ body.lb-open{overflow:hidden}
       imgEl.src = src;
       imgEl.alt = alt;
       lb.classList.add('is-open');
-      lb.setAttribute('aria-hidden','false');
+      lb.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lb-open');
     }
-    function closeLightbox(){
+    function closeLightbox() {
       lb.classList.remove('is-open');
-      lb.setAttribute('aria-hidden','true');
+      lb.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lb-open');
       imgEl.src = '';
     }
-    function showNext(){ if (!currentList.length) return; currentIndex = (currentIndex + 1) % currentList.length; openLightbox(currentList, currentIndex); }
-    function showPrev(){ if (!currentList.length) return; currentIndex = (currentIndex - 1 + currentList.length) % currentList.length; openLightbox(currentList, currentIndex); }
+    function showNext() { if (!currentList.length) return; currentIndex = (currentIndex + 1) % currentList.length; openLightbox(currentList, currentIndex); }
+    function showPrev() { if (!currentList.length) return; currentIndex = (currentIndex - 1 + currentList.length) % currentList.length; openLightbox(currentList, currentIndex); }
 
     btnClose.addEventListener('click', closeLightbox);
     btnNext.addEventListener('click', showNext);
     btnPrev.addEventListener('click', showPrev);
 
-    lb.addEventListener('click', function(e){
+    lb.addEventListener('click', function (e) {
       if (e.target === lb) closeLightbox();
     });
-    document.addEventListener('keydown', function(e){
+    document.addEventListener('keydown', function (e) {
       if (!lb.classList.contains('is-open')) return;
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowRight') showNext();

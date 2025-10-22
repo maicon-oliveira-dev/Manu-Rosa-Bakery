@@ -91,6 +91,25 @@
     bottom: 8px !important;
   }
 }
+/* === Ajuste final contra espaço em branco === */
+@media (max-width: 430px) {
+  .banner {
+    height: auto !important;
+    min-height: 74svh !important; /* levemente menor */
+    margin-bottom: -1px !important; /* cola visual */
+  }
+  .banner + .galeria {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  .banner > *:last-child { margin-bottom: 0 !important; }
+}
+
+@supports (height: 100dvh) {
+  @media (max-width: 430px) {
+    .banner { min-height: 74dvh !important; }
+  }
+}
 
 /* Preferir dvh quando suportado (mantendo svh como fallback acima) */
 @supports (height: 100dvh) {
