@@ -28,8 +28,24 @@
 
 /* Trim spacing before gallery on small screens */
 @media (max-width: 820px) {
+
+  /* Remove any accidental gap after banner */
+  .banner {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Keep gallery tight to the banner */
+  .banner+.galeria {
+    margin-top: 0 !important;
+    padding-top: 6px !important;
+    /* was 10px */
+  }
+
+  /* General gallery spacing fallback */
   .galeria {
-    padding-top: 10px;
+    padding-top: 8px;
+    /* ensure compact spacing even if structure changes */
     margin-top: 0;
   }
 }
