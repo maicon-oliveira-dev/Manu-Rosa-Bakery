@@ -28,7 +28,7 @@
   /* Encostar a galeria no banner */
   .banner+.galeria {
     margin-top: 0 !important;
-    padding-top: 6px !important;
+    padding-top: 0 !important;
   }
 
   /* Anti-colapso de margens internas */
@@ -97,12 +97,14 @@
     height: auto !important;
     min-height: 74svh !important; /* levemente menor */
     margin-bottom: -1px !important; /* cola visual */
+    padding-bottom: 0 !important;
   }
   .banner + .galeria {
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
   .banner > *:last-child { margin-bottom: 0 !important; }
+  .banner .banner-dots { bottom: 6px !important; }
 }
 
 @supports (height: 100dvh) {
@@ -308,36 +310,7 @@ img[loading="lazy"] {
   }
 }
 
-/* === Micro-fix: banner sem sobra nas telas pequenas === */
-@media (max-width: 430px) {
-  .banner {
-    height: auto !important;
-    min-height: 76svh !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .banner+.galeria {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  .banner>*:last-child {
-    margin-bottom: 0 !important;
-  }
-
-  .banner .banner-dots {
-    bottom: 6px !important;
-  }
-}
-
-@supports (height: 100dvh) {
-  @media (max-width: 430px) {
-    .banner {
-      min-height: 76dvh !important;
-    }
-  }
-}
+ 
 
 /* === Breakpoints otimizados (legacy - disabled) === */
 
