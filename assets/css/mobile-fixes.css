@@ -220,3 +220,37 @@ img[loading="lazy"] {
     order: 2;
   }
 }
+
+/* === Ajuste fino: eliminar gap entre banner e galeria em telas pequenas === */
+@media (max-width: 480px) {
+
+  /* Banner ocupa apenas o necessário (sem sobra vertical) */
+  .banner {
+    height: auto !important;
+    min-height: min(88svh, calc(100svh - var(--header-h, 0px))) !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Garante que o último elemento dentro do banner não empurre a galeria */
+  .banner>*:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Galeria encostada no banner, sem degrau */
+  .banner+.galeria,
+  .galeria {
+    margin-top: 0 !important;
+    padding-top: 4px !important;
+  }
+
+  /* Remove margem colapsada entre seções internas */
+  .galeria>*:first-child {
+    margin-top: 0 !important;
+  }
+
+  /* Ajuste de posição dos pontinhos do carrossel */
+  .banner .banner-dots {
+    bottom: 8px !important;
+  }
+}
