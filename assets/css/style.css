@@ -1,0 +1,683 @@
+/*cores*/
+
+:root {
+  /* Brand */
+  --brand: #B08A52;
+  --brand-600: #8F6F3E;
+  /* hover/border forte */
+  --brand-200: #D4BF9A;
+  /* hover leve/fundos brand */
+
+  /* Neutros */
+  --bg: #B4A1A4;
+  --text: #111111;
+  --text-2: #444444;
+  --border: #E5E7EB;
+  --shadow: 0 6px 18px rgba(0, 0, 0, .06);
+}
+
+
+
+
+/* comandos globais */
+
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style: none;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+  background-color: #FDECE6;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* header */
+
+
+header .container {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  gap: 16px;
+  background-color: #f4e1e3;
+
+}
+
+header nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .logo img {
+  max-width: 100px;
+  height: auto;
+
+}
+
+header .logo img:hover {
+  transform: scale(1.4);
+  transition: 1.2s;
+}
+
+header .leftside {
+  display: flex;
+  flex: 1;
+
+}
+
+header nav li {
+  margin: 0 30px;
+
+}
+
+header nav li a {
+  text-decoration: none;
+  color: var(--brand);
+}
+
+header nav li a:hover {
+  color: var(--brand-200);
+
+}
+
+header .button {
+  display: block;
+  border: 1px solid var(--brand);
+  padding: 12px 24px;
+  background-color: #C73250;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+
+}
+
+header .button:hover {
+  border-color: var(--brand-600);
+  color: var(--brand-600);
+  transform: scale(1.1);
+  transition: 1.2s;
+}
+
+/* Mobile toggle (hambúrguer) */
+header .menu-toggle {
+  display: none;
+  /* só aparece no mobile (<= 820px) */
+  width: 36px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  /* propriedades de layout entram quando o display é ativado no @media */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background: var(--brand-600);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease, background-color .2s ease;
+}
+
+header.is-open .menu-toggle .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+header.is-open .menu-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+
+header.is-open .menu-toggle .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Bloqueia scroll ao abrir menu */
+body.menu-open {
+  overflow: hidden;
+}
+
+header .menu {
+  display: none;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+header .menu-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+header .menu-icon div {
+  height: 6px;
+  background-color: var(--brand-600);
+  border-radius: 2px;
+}
+
+/* ====== Banner Carousel ====== */
+.banner {
+  position: relative;
+  /* fallback; JS ajusta dinamicamente */
+  min-height: calc(100vh - var(--header-h, 0px));
+}
+
+.banner .banner-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* wrapper */
+}
+
+.banner .banner-track {
+  display: flex;
+  /* trilho */
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 1s ease;
+  /* animação mais lenta */
+}
+
+.banner .banner-slide {
+  flex: 0 0 100%;
+  /* cada slide ocupa 100% */
+  height: 100%;
+  position: relative;
+}
+
+.banner .banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* preencher sem distorcer */
+  display: block;
+}
+
+/* Overlay rgba para deixar a foto mais opaca */
+.banner .banner-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .8);
+  /* mais escuro para melhor legibilidade */
+  pointer-events: none;
+  /* não bloqueia cliques do conteúdo */
+}
+
+/* Área de conteúdo (título, descrição e botão) */
+.banner .banner-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  /* centraliza conteúdo no centro da tela */
+  place-items: center;
+  place-content: center;
+  /* mantém os itens agrupados no centro (não espalha) */
+  grid-auto-rows: max-content;
+  /* linhas com altura do conteúdo */
+  text-align: center;
+  padding: 16px;
+  /* menos respiro */
+  gap: 6px;
+  /* ainda mais próximo entre título, texto e botão */
+  color: #fff;
+}
+
+.banner .banner-content>* {
+  margin: 0;
+}
+
+.banner .banner-content h1 {
+  font-family: 'Calistoga', serif;
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--brand-600);
+  /* cor específica para o título */
+}
+
+.banner .banner-content p {
+  max-width: 560px;
+  /* bloco mais compacto */
+  line-height: 1.45;
+  margin-bottom: 6px;
+  margin-top: 2px;
+  /* fica logo abaixo do h1 */
+  color: #fff;
+  /* cor específica para o parágrafo */
+  font-size: 22px;
+}
+
+.banner .banner-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid #111111;
+  background: #C73250;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 4px;
+  /* pequena separação do texto */
+}
+
+.banner .banner-btn:hover {
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+}
+
+/* Dots */
+.banner .banner-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.banner .banner-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--brand);
+  opacity: .5;
+  cursor: pointer;
+  padding: 0;
+}
+
+.banner .banner-dot.is-active {
+  background: var(--brand-600);
+  opacity: 1;
+}
+
+/* Setas */
+.banner .banner-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, .25);
+  color: #fff;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  /* aumenta área de toque */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.banner .banner-arrow.left {
+  left: 12px;
+}
+
+.banner .banner-arrow.right {
+  right: 12px;
+}
+
+.banner .banner-arrow:hover {
+  background: rgba(0, 0, 0, .9);
+}
+
+/* Acessibilidade: foco visível */
+.banner .banner-arrow:focus,
+.banner .banner-dot:focus {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+/* Mobile: setas opcionais */
+@media (max-width: 820px) {
+  .banner .banner-arrow {
+    display: none;
+  }
+
+  .banner .banner-dots {
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner .banner-track {
+    transition: none;
+  }
+}
+
+/* Ajustes de tipografia do conteúdo no mobile */
+@media (max-width: 820px) {
+  .banner .banner-content {
+    justify-items: center;
+    text-align: center;
+    padding: 10px 14px 32px;
+    /* reduz espa�o inferior no mobile */
+    gap: 5px;
+    /* compacta a pilha */
+  }
+
+  .banner .banner-content h1 {
+    font-size: clamp(20px, 5.2vw, 26px);
+    line-height: 1.15;
+  }
+
+  .banner .banner-content p {
+    font-size: 15.5px;
+    line-height: 1.4;
+    max-width: 92vw;
+    /* ocupa mais largura para quebrar menos */
+  }
+
+  .banner .banner-btn {
+    padding: 8px 14px;
+    /* botão menor */
+    font-size: 14.5px;
+    border-radius: 10px;
+  }
+}
+
+/* Ajuste fino para telas muito pequenas */
+@media (max-width: 480px) {
+  .banner .banner-content h1 {
+    font-size: clamp(12px, 6.2vw, 22px);
+    line-height: 1.12;
+  }
+
+  .banner .banner-content p {
+    font-size: 10px;
+    max-width: 94vw;
+  }
+
+  .banner .banner-btn {
+    padding: 7px 12px;
+    font-size: 13.5px;
+  }
+
+  .banner .banner-dots {
+    bottom: 10px;
+  }
+}
+
+/* Ultra pequeno (ex.: 360px) */
+@media (max-width: 360px) {
+  .banner .banner-content h1 {
+    font-size: 17px;
+  }
+
+  .banner .banner-content p {
+    font-size: 13.5px;
+    max-width: 95vw;
+  }
+
+  .banner .banner-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}
+
+
+
+
+/* ====== Galeria ====== */
+.galeria {
+  padding: 32px 0 40px;
+}
+
+.galeria .container {
+  max-width: 900px;
+}
+
+.galeria h2 {
+  font-family: 'Calistoga', serif;
+  font-size: clamp(22px, 4.5vw, 30px);
+  line-height: 1.2;
+  margin: 0 0 14px 0;
+  color: var(--brand-600);
+  text-align: center;
+}
+
+.galeria .galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* 2 colunas sempre */
+  gap: 12px;
+  align-items: start;
+}
+
+/* Centraliza o último item quando a quantidade é ímpar */
+.galeria .galeria-grid .galeria-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: 560px;
+  /* não deixa muito largo ao ocupar 2 colunas */
+}
+
+.galeria .galeria-item {
+  position: relative;
+  overflow: hidden;
+  /* garante shape uniforme */
+  background: #FDECE6;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3;
+  /* tamanho uniforme e menor */
+}
+
+.galeria .galeria-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* preenche o tile mantendo uniformidade */
+  display: block;
+  transition: transform .35s ease;
+}
+
+/* Evita corte nas 4 primeiras imagens (manu1..manu4) */
+#galeria .galeria-item:nth-child(-n+4) img {
+  object-fit: contain;
+  /* mostra a foto inteira dentro do tile */
+}
+
+.galeria .galeria-item:hover img {
+  transform: scale(1.04);
+}
+
+.galeria .galeria-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.galeria .gallery-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  background: #C73250;
+  color: white;
+  text-decoration: none;
+
+}
+
+.galeria .gallery-btn:hover {
+  background: var(--brand-200);
+  border-color: var(--brand-600);
+}
+
+/* Galeria breakpoints (mantém 2 colunas em todas as larguras) */
+@media (min-width: 600px) {
+  .galeria .galeria-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+/* ====== Sobre ====== */
+.sobre {
+  padding: 40px 0;
+}
+
+.sobre h2 {
+  font-family: 'Calistoga', serif;
+  font-size: clamp(22px, 4.8vw, 32px);
+  line-height: 1.2;
+  color: var(--brand-600);
+  text-align: center;
+  margin-bottom: 12px;
+
+
+}
+
+.sobre .sobre-texto {
+  max-width: 820px;
+  margin: 0 auto;
+  font-weight: 500;
+  text-align: center;
+  color: #2A4351;
+  display: grid;
+  gap: 13px;
+}
+
+.sobre .sobre-texto p {
+  line-height: 1.6;
+}
+
+.sobre .refs {
+  font-size: 14px;
+  color: #2A4351;
+  opacity: .8;
+  text-transform: uppercase;
+}
+
+/* Card da seção Sobre */
+.sobre .sobre-card {
+  margin: 0 auto;
+  padding: 22px 20px;
+  background: #f4e1e3;
+  /* fundo do card */
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  max-width: 900px;
+}
+
+.sobre h2::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--brand-600);
+  border-radius: 999px;
+  margin: 8px auto 0;
+}
+
+@media (min-width: 768px) {
+  .sobre .sobre-card {
+    padding: 28px;
+    border-radius: 18px;
+  }
+}
+
+/* responsividade */
+
+@media (max-width: 820px) {
+
+  /* Header layout */
+  header .container {
+    justify-content: space-between;
+  }
+
+  header .logo img {
+    max-width: 100px;
+    height: auto;
+  }
+
+  /* Mostrar botão hambúrguer no mobile */
+  header .menu-toggle {
+    display: inline-flex;
+  }
+
+  /* Nav como painel suspenso */
+  header nav {
+    position: fixed;
+    top: var(--header-h, 64px);
+    left: 0;
+    right: 0;
+    background: #FFE5E9;
+    display: none;
+    flex-direction: column;
+    padding: 16px 20px 22px;
+    gap: 8px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+  }
+
+  header.is-open nav {
+    display: flex;
+  }
+
+  /* Empilhar links e CTA */
+  header .leftside {
+    flex-direction: column;
+  }
+
+  header nav li {
+    margin: 0;
+  }
+
+  header nav li a {
+    display: block;
+    padding: 12px 0;
+    color: var(--brand);
+  }
+
+  header .rightside {
+    margin-top: 6px;
+  }
+
+  /* Backdrop para foco visual */
+  header.is-open::after {
+    content: '';
+    position: fixed;
+    top: var(--header-h, 64px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .35);
+    z-index: 999;
+  }
+}
