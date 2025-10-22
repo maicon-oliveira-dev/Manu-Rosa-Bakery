@@ -1,61 +1,77 @@
 /* Mobile spacing and viewport fixes */
 
-/* Use dynamic viewport on supported browsers to avoid extra space under banner */
-@supports (height: 100dvh) {
-  .banner {
-    min-height: calc(100dvh - var(--header-h, 0px));
-  }
-}
+/* Legacy: removed */
 
 /* Em telas menores, reduza a altura do banner para evitar espaço em branco */
 @media (max-width: 820px) {
 
   /* Fallback genérico usando 100vh */
   .banner {
-    min-height: min(72vh, calc(100vh - var(--header-h, 0px))) !important;
+    /* legacy neutralized */
+    min-height: auto !important;
   }
 }
 
-@supports (height: 100dvh) {
-  @media (max-width: 820px) {
+/* === Breakpoints consolidados e otimizados === */
 
-    /* Preferir 100dvh quando suportado */
-    .banner {
-      min-height: min(72vh, calc(100dvh - var(--header-h, 0px))) !important;
-    }
-  }
-}
-
-/* Trim spacing before gallery on small screens */
+/* 820px — tablets pequenos / celulares grandes */
 @media (max-width: 820px) {
-
-  /* Remove any accidental gap after banner */
+  /* Banner fluido e sem sobra vertical */
   .banner {
+    height: auto !important;
+    min-height: 92svh !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
 
-  /* Keep gallery tight to the banner */
-  .banner+.galeria {
+  /* Encostar a galeria no banner */
+  .banner + .galeria {
     margin-top: 0 !important;
     padding-top: 6px !important;
-    /* was 10px */
   }
 
-  /* General gallery spacing fallback */
-  .galeria {
-    padding-top: 8px;
-    /* ensure compact spacing even if structure changes */
-    margin-top: 0;
-  }
+  /* Anti-colapso de margens internas */
+  .banner > *:last-child { margin-bottom: 0 !important; }
+  .galeria > *:first-child { margin-top: 0 !important; }
+
+  /* Dots do carrossel mais próximos do conteúdo */
+  .banner .banner-dots { bottom: 12px !important; }
 }
 
-/* Make banner a bit shorter on very small screens to reduce perceived gap */
-@media (max-width: 480px) {
-  .banner {
-    min-height: min(70vh, calc(100dvh - var(--header-h, 0px))) !important;
-  }
+/* 414px — iPhone Plus / Galaxy S */
+@media (max-width: 414px) {
+  .banner { min-height: 90svh !important; }
+  .banner + .galeria { padding-top: 4px !important; }
+  .banner .banner-dots { bottom: 10px !important; }
 }
+
+/* 360px — Android básico */
+@media (max-width: 360px) {
+  .banner { min-height: 88svh !important; }
+  .banner + .galeria { padding-top: 2px !important; }
+  .banner .banner-dots { bottom: 9px !important; }
+}
+
+/* 320px — limite mínimo (iPhone SE) */
+@media (max-width: 320px) {
+  .banner { min-height: 85svh !important; }
+  .banner + .galeria { margin-top: 0 !important; padding-top: 0 !important; }
+  .banner .banner-dots { bottom: 8px !important; }
+}
+
+/* Preferir dvh quando suportado (mantendo svh como fallback acima) */
+@supports (height: 100dvh) {
+  @media (max-width: 820px)   { .banner { min-height: 92dvh !important; } }
+  @media (max-width: 414px)   { .banner { min-height: 90dvh !important; } }
+  @media (max-width: 360px)   { .banner { min-height: 88dvh !important; } }
+  @media (max-width: 320px)   { .banner { min-height: 85dvh !important; } }
+}
+
+/* Legacy: removed per consolidated breakpoints */
+
+/* Legacy spacing block removed (handled in consolidated breakpoints) */
+
+/* Legacy 480px banner height rule removed */
 
 /* Smooth anchor scrolling for a nicer feel */
 html {
@@ -221,8 +237,108 @@ img[loading="lazy"] {
   }
 }
 
-/* === Ajuste fino: eliminar gap entre banner e galeria em telas pequenas === */
-@media (max-width: 480px) {
+/* === Breakpoints otimizados (legacy - disabled) === */
+
+/* ====== 320px - limite mínimo (iPhone SE) ====== */
+@media (max-width: 0px) { /* legacy disabled */
+  .banner {
+    height: auto !important;
+    min-height: 85svh !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .banner+.galeria {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .banner .banner-content h1 {
+    font-size: 16px !important;
+  }
+
+  .banner .banner-content p {
+    font-size: 12.5px !important;
+  }
+
+  .banner .banner-btn {
+    font-size: 12.5px !important;
+    padding: 6px 10px;
+  }
+}
+
+/* ====== 360px - Android básico ====== */
+@media (max-width: 0px) { /* legacy disabled */
+  .banner {
+    min-height: 88svh !important;
+  }
+
+  .banner .banner-content h1 {
+    font-size: 18px !important;
+  }
+
+  .banner .banner-content p {
+    font-size: 13.5px !important;
+  }
+
+  .banner .banner-btn {
+    font-size: 13px !important;
+    padding: 7px 11px;
+  }
+
+  .banner+.galeria {
+    padding-top: 2px !important;
+  }
+}
+
+/* ====== 414px - iPhone Plus / Galaxy S ====== */
+@media (max-width: 0px) { /* legacy disabled */
+  .banner {
+    min-height: 90svh !important;
+  }
+
+  .banner .banner-content h1 {
+    font-size: 20px !important;
+  }
+
+  .banner .banner-content p {
+    font-size: 14px !important;
+  }
+
+  .banner .banner-btn {
+    font-size: 14px !important;
+    padding: 8px 14px;
+  }
+
+  .banner+.galeria {
+    padding-top: 4px !important;
+  }
+}
+
+/* ====== 820px - tablets pequenos (modo retrato) ====== */
+@media (max-width: 0px) { /* legacy disabled */
+  .banner {
+    min-height: 92svh !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .banner+.galeria {
+    margin-top: 0 !important;
+    padding-top: 6px !important;
+  }
+
+  .banner .banner-content h1 {
+    font-size: clamp(22px, 5.2vw, 26px);
+  }
+
+  .banner .banner-content p {
+    font-size: clamp(14px, 3.8vw, 18px);
+  }
+}
+
+/* === Ajuste fino (legacy - disabled) === */
+@media (max-width: 0px) {
 
   /* Banner ocupa apenas o necessário (sem sobra vertical) */
   .banner {
@@ -241,7 +357,7 @@ img[loading="lazy"] {
   .banner+.galeria,
   .galeria {
     margin-top: 0 !important;
-    padding-top: 4px !important;
+    padding-top: 2px !important;
   }
 
   /* Remove margem colapsada entre seções internas */
