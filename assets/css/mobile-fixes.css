@@ -37,7 +37,7 @@
 /* Make banner a bit shorter on very small screens to reduce perceived gap */
 @media (max-width: 480px) {
   .banner {
-    min-height: min(70vh, calc(100dvh - var(--header-h, 0px))) !important;
+    min-height: min(40vh, calc(100dvh - var(--header-h, 0px))) !important;
   }
 }
 
