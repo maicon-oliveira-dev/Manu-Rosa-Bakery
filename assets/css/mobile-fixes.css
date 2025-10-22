@@ -41,6 +41,47 @@
   }
 }
 
+@media (max-width: 350px) {
+
+
+  .banner .banner-content p {
+    font-size: 10px;
+  }
+
+  .banner .banner-content h1 {
+    font-size: 11px;
+  }
+
+  .banner .banner-btn {
+    padding: 5px 09px;
+    font-size: 11px;
+    border-radius: 8px;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .banner {
+    min-height: min(40vh, calc(100dvh - var(--header-h, 0px))) !important;
+  }
+
+  .banner .banner-content p {
+    font-size: 9px;
+  }
+
+  .banner .banner-content h1 {
+    font-size: 10px;
+  }
+
+  .banner .banner-btn {
+    padding: 5px 09px;
+    font-size: 10px;
+    border-radius: 8px;
+  }
+}
+
+
+
 /* Smooth anchor scrolling for a nicer feel */
 html {
   scroll-behavior: smooth;
