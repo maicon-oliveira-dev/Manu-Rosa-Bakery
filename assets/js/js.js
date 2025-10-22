@@ -30,7 +30,19 @@
       const header = document.querySelector('header');
       const h = header ? header.offsetHeight : 0;
       // Aplica min-height dinâmico
-      banner.style.minHeight = `calc(100vh - ${h}px)`;
+      // Em telas grandes mantém o cálculo; em telas pequenas deixa o CSS mandar
+      const isSmall = window.matchMedia('(max-width: 820px)').matches;
+      if (!isSmall) {
+        const hasModernVH = CSS.supports('height: 100svh') || CSS.supports('height: 100dvh');
+        if (hasModernVH) {
+          banner.style.minHeight = `calc(100svh - ${h}px)`;
+        } else {
+          const vh = (window.visualViewport?.height) || window.innerHeight;
+          banner.style.minHeight = `calc(${vh}px - ${h}px)`;
+        }
+      } else {
+        banner.style.minHeight = '';
+      }
       // Opcional: expõe variável CSS
       document.documentElement.style.setProperty('--header-h', `${h}px`);
     }
