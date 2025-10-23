@@ -52,7 +52,7 @@ header .container {
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
-  gap: 16px;
+  gap: 2px;
   background-color: #FDECE6;
 
 }
@@ -88,13 +88,14 @@ header .leftside {
 }
 
 header nav li {
-  margin: 0 30px;
+  margin: 0 20px;
 
 }
 
 header nav li a {
   text-decoration: none;
   color: var(--brand);
+  font-size: 14px;
 }
 
 header nav li a:hover {
@@ -105,11 +106,12 @@ header nav li a:hover {
 header .button {
   display: block;
   border: 1px solid var(--brand);
-  padding: 12px 24px;
+  padding: 10px 15px;
   background-color: #C73250;
   text-decoration: none;
   color: white;
   border-radius: 15px;
+  font-size: 1rem;
 
 }
 
@@ -446,6 +448,171 @@ header .menu-icon div {
   }
 }
 
+/* Por que escolher a Manu (cards de valor) */
+
+.diferenciais {
+  padding: 48px 0;
+  background: #FFE5E9;
+}
+
+.diferenciais h2 {
+  font-family: 'Calistoga', serif;
+  color: var(--brand-600);
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: clamp(22px, 4.5vw, 30px);
+}
+
+.grid-cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  max-width: 1100px;
+  margin: 0 auto 16px;
+}
+
+@media (min-width: 900px) {
+  .grid-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  text-align: left;
+}
+
+.card h3 {
+  color: #2A4351;
+  margin-bottom: 6px;
+  font-size: clamp(18px, 2.2vw, 20px);
+}
+
+.card p {
+  color: #333;
+  line-height: 1.5;
+  font-size: 15.5px;
+}
+
+.diferenciais .button {
+  display: block;
+  width: max-content;
+  margin: 12px auto 0;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  background: #C73250;
+  color: #fff;
+  text-decoration: none;
+}
+
+.diferenciais .button:hover {
+  background: var(--brand-200);
+  border-color: var(--brand-600);
+}
+
+
+/* ===== Workshops & E-books ===== */
+.workshops {
+  padding: 60px 0;
+  background: #FDECE6;
+}
+
+.workshops h2 {
+  font-family: 'Calistoga', serif;
+  color: var(--brand-600);
+  text-align: center;
+  font-size: clamp(22px, 4.5vw, 30px);
+  margin-bottom: 10px;
+}
+
+.workshops .intro {
+  text-align: center;
+  color: #2A4351;
+  max-width: 760px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.workshops-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .workshops-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.workshop-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.workshop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+}
+
+.workshop-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.workshop-card .card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.workshop-card h3 {
+  color: var(--brand-600);
+  font-size: clamp(18px, 2.2vw, 20px);
+  margin-bottom: 8px;
+}
+
+.workshop-card p {
+  color: #333;
+  font-size: 15.5px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.workshop-card .button {
+  display: inline-block;
+  width: max-content;
+  margin-top: 12px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  background: #C73250;
+  color: #fff;
+  text-decoration: none;
+}
+
+.workshop-card .button:hover {
+  background: var(--brand-200);
+  border-color: var(--brand-600);
+}
+
 
 
 
@@ -545,6 +712,178 @@ header .menu-icon div {
     gap: 14px;
   }
 }
+
+
+/* ====== Depoimentos ====== */
+.depoimentos {
+  padding: 60px 0;
+  background: #FFE5E9;
+}
+
+.depoimentos h2 {
+  font-family: 'Calistoga', serif;
+  color: var(--brand-600);
+  text-align: center;
+  font-size: clamp(22px, 4.5vw, 30px);
+  margin-bottom: 10px;
+}
+
+.depoimentos .intro {
+  text-align: center;
+  color: #2A4351;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.depoimentos-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .depoimentos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.depoimento-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.depoimento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.depoimento-text {
+  color: #333;
+  font-size: 16.5px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.depoimento-nome {
+  color: var(--brand-600);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+
+
+/* ===== FAQ de Encomendas ===== */
+.faq {
+  padding: 60px 0;
+  background: #FDECE6;
+}
+
+.faq h2 {
+  font-family: 'Calistoga', serif;
+  color: var(--brand-600);
+  text-align: center;
+  font-size: clamp(22px, 4.5vw, 30px);
+  margin-bottom: 10px;
+}
+
+.faq .intro {
+  text-align: center;
+  color: #2A4351;
+  max-width: 760px;
+  margin: 0 auto 28px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto 16px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Card/Accordion */
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.faq-item>summary {
+  list-style: none;
+  /* remove marcador padrão */
+  cursor: pointer;
+  padding: 16px 18px;
+  font-weight: 600;
+  color: #2A4351;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ícone +/– com ::after */
+.faq-item>summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 20px;
+  line-height: 1;
+  transition: transform .2s ease;
+  color: var(--brand-600);
+}
+
+.faq-item[open]>summary::after {
+  content: "–";
+  transform: rotate(0);
+}
+
+.faq-item .answer {
+  padding: 0 18px 16px 18px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+/* Estados de foco/acessibilidade */
+.faq-item>summary:focus {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+/* Botão final (herda seu padrão) */
+.faq .button {
+  display: block;
+  width: max-content;
+  margin: 16px auto 0;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  background: #C73250;
+  color: #fff;
+  text-decoration: none;
+
+}
+
+.faq .button:hover {
+  background: var(--brand-200);
+  border-color: var(--brand-600);
+}
+
+
 
 /* ====== Sobre ====== */
 .sobre {
