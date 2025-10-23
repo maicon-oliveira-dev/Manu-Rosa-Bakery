@@ -53,7 +53,7 @@ header .container {
   padding-top: 5px;
   padding-bottom: 5px;
   gap: 16px;
-  background-color: #f4e1e3;
+  background-color: #FDECE6;
 
 }
 
@@ -679,5 +679,72 @@ header .menu-icon div {
     bottom: 0;
     background: rgba(0, 0, 0, .35);
     z-index: 999;
+  }
+}
+
+
+/* ===== Hero guiado pelo conteúdo em telas grandes ===== */
+@media (min-width: 1600px) {
+
+  /* 1) Deixe o CSS governar a altura (vence o inline do JS) */
+  .banner {
+    min-height: auto !important;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  /* 2) O slide passa a “ter” altura pelo conteúdo */
+  .banner .banner-slide {
+    position: relative;
+    height: auto;
+  }
+
+  /* 3) Conteúdo volta ao fluxo para gerar altura */
+  .banner .banner-content {
+    position: relative;
+    /* era absolute */
+    inset: auto;
+    max-width: 1200px;
+    /* acompanha o seu .container */
+    margin-inline: auto;
+    padding: clamp(96px, 12vh, 180px) 16px;
+    /* respiro vertical confortável em 2K/4K */
+    text-align: center;
+    gap: 10px;
+  }
+
+  /* 4) Imagem fica por trás, preenchendo todo o slide */
+  .banner .banner-slide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 5) Tipografia e botão escalam com limite (sem exagerar) */
+  .banner .banner-content h1 {
+    font-size: clamp(2.2rem, 2.6vw, 4rem);
+    line-height: 1.2;
+  }
+
+  .banner .banner-content p {
+    font-size: clamp(1.1rem, 1.35vw, 1.6rem);
+    line-height: 1.5;
+    max-width: 820px;
+    margin-inline: auto;
+  }
+
+  .banner .banner-btn {
+    font-size: clamp(1rem, 1.1vw, 1.3rem);
+    padding: 16px 36px;
+    border-radius: 14px;
+  }
+}
+
+/* Opcional (ultrawide ≥ 1920px): mantém leitura confortável */
+@media (min-width: 1920px) {
+  .banner .banner-content {
+    max-width: 1200px;
   }
 }

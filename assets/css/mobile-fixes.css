@@ -230,10 +230,11 @@ img[loading="lazy"] {
   display: inline-block;
   border: 1px solid var(--brand);
   padding: 12px 20px;
-  background: #fad3d7;
+  background: #C73250;
   color: var(--brand);
   text-decoration: none;
   border-radius: 12px;
+
 }
 
 .site-footer .button:hover {
