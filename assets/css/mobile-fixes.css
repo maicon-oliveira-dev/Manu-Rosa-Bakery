@@ -231,7 +231,7 @@ img[loading="lazy"] {
   border: 1px solid var(--brand);
   padding: 12px 20px;
   background: #C73250;
-  color: var(--brand);
+  color: white;
   text-decoration: none;
   border-radius: 12px;
 
