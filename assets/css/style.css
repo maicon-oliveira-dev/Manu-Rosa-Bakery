@@ -116,8 +116,8 @@ header .button {
 }
 
 header .button:hover {
+  background: var(--brand-200);
   border-color: var(--brand-600);
-  color: var(--brand-600);
   transform: scale(1.1);
   transition: 1.2s;
 }
@@ -926,7 +926,7 @@ header .menu-icon div {
 .sobre .sobre-card {
   margin: 0 auto;
   padding: 22px 20px;
-  background: #f4e1e3;
+  background: white;
   /* fundo do card */
   border: 1px solid var(--border);
   border-radius: 16px;
