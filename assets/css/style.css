@@ -477,6 +477,16 @@ header .menu-icon div {
   }
 }
 
+.workshops .workshop-card img {
+  width: 100%;
+  height: 180px;
+  /* pode aumentar pra 150 se quiser */
+  object-fit: contain;
+  border-radius: 18px 18px 0 0;
+  display: block;
+}
+
+
 .card {
   background: #fff;
   border: 1px solid var(--border);
