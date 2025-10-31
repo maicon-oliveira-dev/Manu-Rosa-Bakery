@@ -392,6 +392,33 @@ img {
     }
 }
 
+/* ebook-about responsivo */
+@media (max-width: 820px) {
+    .ebook-wrapper {
+        grid-template-columns: 1fr;
+        /* empilha */
+        gap: 1.8rem;
+    }
+
+    .ebook-text {
+        order: 1;
+        /* texto primeiro */
+    }
+
+    .ebook-image {
+        order: 2;
+        /* imagem depois */
+        max-width: 280px;
+        margin-inline: auto;
+        /* centraliza a imagem */
+    }
+
+    .ebook-image img {
+        width: 100%;
+    }
+}
+
+
 @media (max-width: 620px) {
     .reasons-grid {
         grid-template-columns: 1fr;
