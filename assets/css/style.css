@@ -488,18 +488,21 @@ header .menu-icon div {
 
 
 .card {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow);
   padding: 18px;
-  text-align: left;
+  text-align: center;
+
 }
 
 .card h3 {
   color: #2A4351;
   margin-bottom: 6px;
-  font-size: clamp(18px, 2.2vw, 20px);
+  font-size: clamp(16px, 1.9vw, 17px);
+
+  text-align: center;
 }
 
 .card p {
