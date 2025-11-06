@@ -317,3 +317,33 @@ body.lb-open{overflow:hidden}
     console && console.warn && console.warn('Gallery/lightbox init error:', err);
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  const root = document.documentElement;
+
+  if (!header) return;
+
+  function setHeaderHeight() {
+    const h = header.offsetHeight;
+    root.style.setProperty('--header-h', h + 'px');
+  }
+
+  // Define altura inicial
+  setHeaderHeight();
+
+  // Atualiza ao redimensionar (mobile/desktop)
+  window.addEventListener('resize', setHeaderHeight);
+
+  // Aplica classe de header compacto ao rolar
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
+    // Atualiza a altura quando muda o estado
+    setHeaderHeight();
+  });
+});

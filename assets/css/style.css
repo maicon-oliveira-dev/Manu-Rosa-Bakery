@@ -122,6 +122,44 @@ header .button:hover {
   transition: 1.2s;
 }
 
+/* Header fixo no topo */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #FDECE6;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: padding 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+/* Garante que o conteúdo não suba por baixo do header */
+body {
+  padding-top: var(--header-h, 80px);
+}
+
+/* Estado compacto quando o usuário rola a página */
+header.header--scrolled .container {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+header.header--scrolled .logo img {
+  max-width: 72px;
+}
+
+header.header--scrolled nav li a {
+  font-size: 13px;
+}
+
+header.header--scrolled .button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+
 /* Mobile toggle (hambúrguer) */
 header .menu-toggle {
   display: none;
